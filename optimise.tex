@@ -1,0 +1,86 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{A network theory and MCMC method for selection of optimal marine protected networks}
+\author{Fox, Alan \and Corne, David}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+The connectivity of marine ecosystems is recognised as fundamental to survival, growth and spread, and hence to their protection. This is recognised in international agreements to protect the marine environment. Little is known of the characteristics of marine connectivity even for species with simple life cycles---sessile benthic adult phase and pelagic larvae---let alone for more mobile species, but large-scale efforts are underway, using state-of-the art sampling systems, new genetic techniques and particle tracking in high resolution ocean models which will increase this knowledge. The question then becomes how do we incorporate this knowledge into marine protection. The current generation of computational tools for spatial conservation prioritisation (e.g. Marxan, Zonation) do not incorporate the remote connectivity, between spatially separate population, common in marine ecosystems in their optimisation methods.
+
+The obvious starting point for this is results from the rapidly expanding fields of network and complexity theory. Many metrics from these fields are appropriate to ecological networks and have been used in assessment of existing or planned marine protected area networks, identifying the most important nodes for supply of genetic material, network robustness, stepping-stones to mantain connectivity and gaps. With a complex network such static analysis is of limited use: removal of a single node has implications for the function and importance of all other nodes in the network. Ranking of nodes is rarely meaningful beyond the first few---consider how quickly internet search result ranking becomes less useful further down the list. To produce results which are more meaningful to protection and management we need methods to search the vast space of possible networks (a network of $n$ sites has $2^n$ possible protected/unprotected configurations) for those which give the optimal combination of properties---maximising the positives and minimising the negatives. For small networks (20--30 sites) all possible network configurations can be examined. Beyond this we need methods to converge more rapidly on the optimal configurations without trawling through all possibilities.
+
+More formally, the problem is one of multi-objective optimisation, where decisions need to be taken in the presence of trade-offs between two or more conflicting objectives, for example maximising network resilience while minimising costs. In a nontrivial multi-objective optimisation problem, there is no single solution that simultaneously optimizes each objective. Instead there are a number of 'Pareto optimal' solutions. A solution is called Pareto optimal if none of the objectives can be improved without degrading some of the others---protection could be increased, but at increased financial cost. The goal is to find the set of Pareto optimal solutions, and quantify the trade-offs, a final single solution would involve subjective preferences of an expert human decision maker.
+
+A series of papers by per Jonsson, Jacobi and co-workers (refs) uses eigenvalue perturbation theory (EPT) to find an optimal subset of MPAs of given total area that maximises the growth rate of the whole meta-population when it is at low abundance, as is typical for threatened populations. This method relies on prior selection of the total area to be protected, reducing the problem to a single-objective optimisation without providing information on the implications of the initial assumptions. 
+
+To fully leverage results from network theory we need to examine the charateristics of marine networks---are they most closely related to regular, random, near-neighbour, small-world or scale-free networks for example. Results on resilience, robustness, percolation, etc. then follow.
+
+
+
+
+\section{Methods}
+
+
+\subsection{A subsection}
+
+More text.
+
+\end{document}
