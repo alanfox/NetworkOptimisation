@@ -49,6 +49,10 @@
 \renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
 \renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
 
+%%% Bibliography
+\usepackage{biblatex}
+\addbibresource{MyCollection.bib}
+
 %%% END Article customizations
 
 %%% The "real" document content comes below...
@@ -63,24 +67,31 @@
 
 \section{Introduction}
 
-The connectivity of marine ecosystems is recognised as fundamental to survival, growth and spread, and hence to their protection. This is recognised in international agreements to protect the marine environment. Little is known of the characteristics of marine connectivity even for species with simple life cycles---sessile benthic adult phase and pelagic larvae---let alone for more mobile species, but large-scale efforts are underway, using state-of-the art sampling systems, new genetic techniques and particle tracking in high resolution ocean models which will increase this knowledge. The question then becomes how do we incorporate this knowledge into marine protection. The current generation of computational tools for spatial conservation prioritisation (e.g. Marxan, Zonation) do not incorporate the remote connectivity, between spatially separate population, common in marine ecosystems in their optimisation methods.
+The way marine ecosystems are connected is fundamental to their survival, growth, spread, recovery from damage and adaptation to changing conditions. This is recognised in international agreements to protect the marine environment. But little is known of the characteristics of this connectivity, particularly in the deep sea, either for species with simple life cycles---sessile, benthic adult phase and pelagic larvae---or for more mobile species. Large-scale efforts are underway, using state-of-the art sampling systems, new genetic techniques and particle tracking in high resolution ocean models which will increase this knowledge. As knowledge of marine connectivity increases the question of how to incorporate it into marine planning and protection then arises. 
 
-The obvious starting point for this is results from the rapidly expanding fields of network and complexity theory. Many metrics from these fields are appropriate to ecological networks and have been used in assessment of existing or planned marine protected area networks, identifying the most important nodes for supply of genetic material, network robustness, stepping-stones to mantain connectivity and gaps. With a complex network such static analysis is of limited use: removal of a single node has implications for the function and importance of all other nodes in the network. Ranking of nodes is rarely meaningful beyond the first few---consider how quickly internet search result ranking becomes less useful further down the list. To produce results which are more meaningful to protection and management we need methods to search the vast space of possible networks (a network of $n$ sites has $2^n$ possible protected/unprotected configurations) for those which give the optimal combination of properties---maximising the positives and minimising the negatives. For small networks (20--30 sites) all possible network configurations can be examined. Beyond this we need methods to converge more rapidly on the optimal configurations without trawling through all possibilities.
+The current generation of computational tools for spatial conservation prioritisation (e.g. Marxan, Zonation) do not incorporate information on the remote connectivity, between the spatially separate populations common in marine ecosystems, in their optimisation methods. Optimisation for connectivity is presently limited to favouring protection of larger spatially connected regions over smaller separate regions.
 
-More formally, the problem is one of multi-objective optimisation, where decisions need to be taken in the presence of trade-offs between two or more conflicting objectives, for example maximising network resilience while minimising costs. In a nontrivial multi-objective optimisation problem, there is no single solution that simultaneously optimizes each objective. Instead there are a number of 'Pareto optimal' solutions. A solution is called Pareto optimal if none of the objectives can be improved without degrading some of the others---protection could be increased, but at increased financial cost. The goal is to find the set of Pareto optimal solutions, and quantify the trade-offs, a final single solution would involve subjective preferences of an expert human decision maker.
+Once connections are mapped (however tentatively) we have a 'Graph' of nodes (sub-populations) and directed edges (the connections between nodes). The obvious starting point for prioritisation is then results from the rapidly expanding fields of network and complexity theory. Many metrics from these fields are appropriate to ecological networks and have been used in assessment of existing or planned marine protected area networks, identifying the most important nodes for supply of genetic material, network robustness, stepping-stones to mantain connectivity and gaps. With a complex network such static analysis is of limited use: removal of a single node can have implications for the function and importance of all other nodes in the network. Ranking of nodes is rarely meaningful beyond the first few---consider how quickly internet search ranking becomes less relevant further down even the first page. To produce results which are more meaningful to protection and management we need methods to search the vast space of possible networks (a network of $n$ sites has $2^n$ possible protected/unprotected configurations, a network of 100 sites has more possible configurations than there are stars in the universe) for those which give the optimal combination of desired properties. For small networks of 20--30 sites all possible network configurations can be examined, beyond this scale we need methods to converge more rapidly on the optimal configurations without trawling through all possibilities.
 
-A series of papers by per Jonsson, Jacobi and co-workers (refs) uses eigenvalue perturbation theory (EPT) to find an optimal subset of MPAs of given total area that maximises the growth rate of the whole meta-population when it is at low abundance, as is typical for threatened populations. This method relies on prior selection of the total area to be protected, reducing the problem to a single-objective optimisation without providing information on the implications of the initial assumptions. 
+More formally, the problem is one of multi-objective optimisation, where decisions need to be taken in the presence of trade-offs between two or more conflicting objectives, for example maximising network resilience while minimising costs. In a nontrivial multi-objective optimisation problem, there is no single solution that simultaneously optimizes each objective. Instead there are a number of 'Pareto optimal' solutions, solutions where none of the objectives can be improved without degrading some of the others---protection could be increased, but \textit{only} at increased financial cost. The goal is to find the set of Pareto optimal solutions, and quantify the trade-offs, a final single solution would involve subjective preferences of an expert human decision maker.
 
-To fully leverage results from network theory we need to examine the charateristics of marine networks---are they most closely related to regular, random, near-neighbour, small-world or scale-free networks for example. Results on resilience, robustness, percolation, etc. then follow.
+A series of papers by Jonsson, Jacobi and co-workers uses eigenvalue perturbation theory (EPT) to find an optimal subset of MPAs of given total area that maximises the growth rate of the whole meta-population when it is at low abundance, as is typical for threatened populations. This method relies on prior selection of the total area to be protected, reducing the problem to a single-objective optimisation without providing information on the implications of the initial assumptions.
 
-
-
+Here we first consider the likely properties marine ecological networks, and specifically for species with the common behavioural pattern of pelagic larval and sedentary adult phases. This allows us to leverage results from network theory to apply to marine networks---for example are they most closely related to regular, random, near-neighbour, small-world or scale-free networks, and as such which whole-network metrics are most appropriate---and to construct model networks. We then outline a method, based around Markov Chain Monte Carlo (MCMC) sampling methods and the expected properties of optimal solutions, to efficiently search for Pareto optimal solutions. These methods are then applied to two distinct marine networks -- the first aimed at conservation, and the second a network of man-made structures.
 
 \section{Methods}
 
 
 \subsection{A subsection}
 
+
+
 More text.
+
+
+\printbibliography
+
+
+
 
 \end{document}
